@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-auth0-kit",
+  "name": "kd-ecommerce-kit",
   "version": "1.0.0",
-  "description": "Minimal starter boilerplate project with React, Redux, React Router and Auth0 authentication",
+  "description": "Minimal starter for ecommerce",
   "main": "server.js",
   "repository": {
     "type": "git",

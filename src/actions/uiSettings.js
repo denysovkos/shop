@@ -4,7 +4,7 @@ export const LOAD_UI_SETTINGS_CATEGORIES = 'UI/LOAD_UI_SETTINGS_CATEGORIES'
 //export const ADD_PRODUCT_TO_BASKET = 'SHOP/ADD_PRODUCT_TOBASKET'
 
 export const loadCategories = () => (dispatch) => {
-      fetch('/ui/categories')
+      fetch('/api/ui/categories')
             .then(response => response.json())
             .then(categories => {
                   categories = categories[categories.length - 1];

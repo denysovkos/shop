@@ -34,14 +34,16 @@ db.once('open', function() {
 
 
 if (isDeveloping) {
-  app.get('/products', api.showAllProducts);
-  app.get('/products/:id', api.showProduct);
-  app.post('/products', api.addProduct);
-  app.put('/products/:id', api.updateProduct);
-  app.delete('/products/:id', api.deleteProduct);
+  app.get('/api/products', api.showAllProducts);
+  app.get('/api/products/:id', api.showProduct);
 
-  app.get('/ui/categories', api.getCategories);
-  app.post('/ui/categories', api.updateCategories);
+  app.post('/api/products', api.addProduct);
+
+  app.put('/api/products/:id', api.updateProduct);
+  app.delete('/api/products/:id', api.deleteProduct);
+
+  app.get('/api/ui/categories', api.getCategories);
+  app.post('/api/ui/categories', api.updateCategories);
 
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {

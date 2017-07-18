@@ -12,3 +12,12 @@ const productSchema = new Schema({
 });
 
 module.exports = productSchema;
+
+
+//PRODUCT Schema
+// {
+//   "title": "3rd prod",
+//     "description": "SOme description",
+//     "price": 987,
+//     "category": ["Женское", "Лифчики"]
+// }

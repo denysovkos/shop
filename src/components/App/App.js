@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from 'semantic-ui-react';
 import { HeaderContainer, HomePageContainer } from '../../containers';
 import { Header } from '../../components';
 
@@ -23,16 +24,18 @@ class App extends React.Component {
     let {pathname} = this.props.location;
     pathname = pathname.slice(1);
 
-    const style = {
-      margin: '0.5em',
-      padding: '0.5em'
-    };
-
     return(
-      <div style={style}>
-        <Header basket={basket} pathname={pathname} categories={categories}/>
-        {this.props.children}
-      </div>
+      <Grid columns='equal' padded relaxed>
+        <Grid.Row columns={16} style={{padding: '0'}}>
+          <Header basket={basket} pathname={pathname} categories={categories}/>
+        </Grid.Row>
+        <Grid.Row columns={16}>
+          {this.props.children}
+        </Grid.Row>
+        <Grid.Row columns={16} color='grey'>
+          HERE WILL BE FOOTER
+        </Grid.Row>
+      </Grid>
     )
   }
 }

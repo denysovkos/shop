@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import { Link, browserHistory } from 'react-router'
 
-import { Menu, Icon, Dropdown } from 'semantic-ui-react'
+import { Menu, Icon, Dropdown, Grid } from 'semantic-ui-react'
 
 export default class Header extends Component {
- 
-  state = { 
-    activeItem: this.props.pathname 
+
+  state = {
+    activeItem: this.props.pathname
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -32,7 +32,7 @@ export default class Header extends Component {
     }, 0);
     return sum + ' грн.';
   }
-  
+
   drawCategories() {
     let {categories} = this.props;
 
@@ -40,10 +40,10 @@ export default class Header extends Component {
 
     return Object.keys(categories).map(root => {
       return (
-        <Dropdown item text={root} icon='chevron down' style={{paddingTop: 25, paddingBottom: 0}}>
+        <Dropdown as='div' key={`menu-item-${root}`} item text={root} icon='chevron down' style={{paddingTop: 25, paddingBottom: 0}}>
         <Dropdown.Menu>
           {Object.values(categories[root]).map(item => {
-            return <Dropdown.Item icon='user'>{item}</Dropdown.Item>
+            return <Dropdown.Item key={`DD-item-${item}`}>{item}</Dropdown.Item>
           })}
         </Dropdown.Menu>
       </Dropdown>
@@ -58,25 +58,25 @@ export default class Header extends Component {
     console.log('>>>>>>', categories)
 
     return (
-      <Menu icon='labeled' color='blue'>
-        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-          <Icon name='home' />
-          <Link to='/'>Главная</Link>
-        </Menu.Item>
-        <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick}>
-          <Icon name='id card outline' />
-          <Link to='/about'>Про нас</Link>
-        </Menu.Item>
-        
-          {this.drawCategories()}
+        <Menu icon='labeled' color='blue' fluid>
+          <Menu.Item as='div' name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+            <Icon name='home' />
+            <Link to='/'>Главная</Link>
+          </Menu.Item>
+          <Menu.Item as='div' name='about' active={activeItem === 'about'} onClick={this.handleItemClick}>
+            <Icon name='id card outline' />
+            <Link to='/about'>Про нас</Link>
+          </Menu.Item>
 
-        <Menu.Menu position='right'>
-        <Menu.Item name='order' active={activeItem === 'order'} onClick={this.handleItemClick}>
-          <Icon name='shopping bag' />
-          <Link to='/order'>{this.handleSumOfOrder()}</Link>
-        </Menu.Item>
-        </Menu.Menu>
-      </Menu>
+            {this.drawCategories()}
+
+          <Menu.Menu position='right'>
+          <Menu.Item as='div' name='order' active={activeItem === 'order'} onClick={this.handleItemClick}>
+            <Icon name='shopping bag' />
+            <Link to='/order'>{this.handleSumOfOrder()}</Link>
+          </Menu.Item>
+          </Menu.Menu>
+        </Menu>
     )
   }
 }

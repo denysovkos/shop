@@ -7,11 +7,11 @@ import {
 } from 'semantic-ui-react'
 
 export class ProductTable extends Component {
-  
+
   drawTable(data) {
   let {addProductToBASKET} = this.props;
 
-  if (!data) 
+  if (!data)
     data = [
       {
         title: 'no title',
@@ -19,10 +19,12 @@ export class ProductTable extends Component {
         price: 'no price'
       }
     ];
-  
+
   let rows = data.map(row => {
     return (
-      <Card>
+      <Card
+        href={`/products/${row._id}`} 
+        key={`/products/${row._id}`}>
         <Image
             src='https://www.2checkout.com/upload/images/graphic_product_tangible.png'/>
         <Card.Content>
@@ -53,11 +55,9 @@ export class ProductTable extends Component {
     let {products} = this.props;
 
     return (
-      <div>
-        <Card.Group>
+        <Card.Group itemsPerRow={4}>
           {this.drawTable(products)}
         </Card.Group >
-      </div>
     )
   }
 }

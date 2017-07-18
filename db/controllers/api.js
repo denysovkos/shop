@@ -4,7 +4,7 @@ const UISettings = require('../models/uiSettings');
 exports.getCategories = (req, res) => {
   UISettings.find((err, categories) => {
     if (err) throw new Error('Error was happens on get settings-categories: ', err);
-    
+
     res.send(categories)
   });
 }
@@ -12,26 +12,26 @@ exports.getCategories = (req, res) => {
 exports.updateCategories = (req, res) => {
   let Categories = UISettings({
       categories: req.body.categories
-    });  
+    });
 
   Categories.save((err) => {
     if (err) throw new Error('Error while update settings-categories: ', err);
-    
+
     res.send(Categories);
   });
 }
 
 exports.addProduct = function (req, res) {
   let newProduct = Products({
-      title: req.body.title, 
-      description: req.body.description, 
+      title: req.body.title,
+      description: req.body.description,
       price: req.body.price,
       category: req.body.category
     });
 
   newProduct.save(function (err) {
     if (err)throw new Error('Error while creating new product: ', err);
-    
+
     res.send(newProduct);
   });
 }
@@ -42,7 +42,7 @@ exports.showAllProducts = function (req, res) {
     });
 }
 
-exports.showProduct = function (req, res) {
+exports.showProduct = (req, res) => {
   let id = req.params.id;
 
   Products.find({
